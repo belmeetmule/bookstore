@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Book = (props) => {
-  const { id, title, author } = props;
+  const { title, author } = props;
   return (
     <li>
       <h2 style={{ marginBottom: 0, paddingBottom: 0 }}>
@@ -15,13 +15,12 @@ const Book = (props) => {
         {author}
         {' '}
       </p>
-      <button id={id} type="button">Remove</button>
+      <button type="button">Remove</button>
     </li>
   );
 };
 
 Book.propTypes = {
-  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
 };
