@@ -4,7 +4,7 @@ const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
 const initialState = [];
 
 // Reducer
- const booksReducer = (state = initialState, action) => {
+const booksReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
       return [...state, action.book];
