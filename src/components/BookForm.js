@@ -21,9 +21,10 @@ const BookForm = () => {
       title,
       author,
     };
+    // dispatch the addBook action creator method
     dispatch(addBook(newBook));
 
-    // Sets back the input fields
+    // clear the imput fields
     setAuthor('');
     setTitle('');
   };
@@ -31,7 +32,7 @@ const BookForm = () => {
   return (
     <>
       <h3 style={{ marginTop: '2rem' }}>ADD NEW BOOK</h3>
-      <form onSubmit={handleSumbit} style={{ display: 'flex', gap: '2rem' }}>
+      <form onSubmit={handleSumbit} style={{ display: 'flex', gap: '1rem' }}>
         <input
           type="text"
           value={title}
