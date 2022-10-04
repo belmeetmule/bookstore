@@ -1,7 +1,23 @@
 // Actions
 const ADD_BOOK = 'bookstore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
-const initialState = [];
+const initialState = [
+  {
+    id: 1,
+    title: 'The Hunger Games',
+    author: 'Suzzane Collins',
+  },
+  {
+    id: 2,
+    title: 'Dune',
+    author: 'Frank Herbert',
+  },
+  {
+    id: 3,
+    title: 'Capital in the twenty-first century',
+    author: 'Suzzane Collins',
+  },
+];
 
 // Reducer
 const booksReducer = (state = initialState, action) => {
