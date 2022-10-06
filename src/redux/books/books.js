@@ -5,6 +5,11 @@ const ADD_BOOK = 'bookstore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
 const GET_BOOKS = 'bookstore/books/GET_BOOKS';
 
+export const getBooks = () => async (dispatch) => {
+  const books = await api.fetchBooks();
+  dispatch({ type: GET_BOOKS, books });
+};
+
 // Action creators
 export const addBook = (book) => async (dispatch) => {
   api.addNewBook(book);
@@ -14,11 +19,6 @@ export const addBook = (book) => async (dispatch) => {
 export const removeBook = (bookId) => async (dispatch) => {
   api.removeBook(bookId);
   dispatch({ type: REMOVE_BOOK, bookId });
-};
-
-export const getBooks = () => async (dispatch) => {
-  const books = await api.fetchBooks();
-  dispatch({ type: GET_BOOKS, books });
 };
 
 // Reducer
