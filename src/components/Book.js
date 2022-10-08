@@ -8,7 +8,6 @@ const Book = (props) => {
   const dispatch = useDispatch();
 
   const handleRemove = () => dispatch(api.removeBook(id));
-  
 
   return (
     <li>
