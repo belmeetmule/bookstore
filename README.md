@@ -26,7 +26,7 @@ In development environment use the following command:
     `npm start`
 
 
-## Authors
+## Author
 👤 **Mulugeta**
 
 - GitHub: [@belmeetmule](https://github.com/belmeetmule)
