@@ -1,22 +1,27 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { fetchBooks } from '../redux/books/api';
+
 import BookList from './BookList';
 import BookForm from './BookForm';
-import api from '../redux/books/api';
 
 const BookContainer = () => {
   // get data from react state
-  const books = useSelector((state) => state.books);
-  console.log(books);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(api.fetchBooks());
-  }, []);
+    dispatch(fetchBooks());
+  }, [dispatch]);
+
+  const books = useSelector((state) => state.books, shallowEqual);
 
   return (
     <>
-      <BookList books={books} />
+      <div id="books-list">
+        {books.map((book) => (
+          <BookList key={book.item_id} book={book} />
+        ))}
+      </div>
       <BookForm />
     </>
   );

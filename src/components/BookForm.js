@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import api from '../redux/books/api';
+import { addBook } from '../redux/books/api';
 
 const BookForm = () => {
   const [title, setTitle] = useState('');
@@ -25,7 +25,7 @@ const BookForm = () => {
       category,
     };
     // dispatch the addBook action creator method
-    dispatch(api.addNewBook(newBook));
+    dispatch(addBook(newBook));
 
     // clear the imput fields
     setAuthor('');

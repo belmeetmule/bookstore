@@ -1,29 +1,37 @@
-// Actions
-export const ADD_BOOK = 'bookstore/books/ADD_BOOK';
-export const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
-export const GET_BOOKS = 'bookstore/books/GET_BOOKS';
+import { GET_BOOKS, ADD_BOOK, REMOVE_BOOK } from './api';
 
-export const GETBOOKS = (dispatch) => {
-  dispatch({ type: GET_BOOKS, books: [] });
-};
+// Action creators section
+export const addBook = (book) => ({
+  type: ADD_BOOK, book,
+});
 
-export const ADDBOOK = (dispatch, book) => {
-  dispatch({ type: ADD_BOOK, book });
-};
-
-export const REMOVEBOOK = (dispatch, bookId) => {
-  dispatch({ type: REMOVE_BOOK, bookId });
-};
+export const removeBook = (book) => ({
+  type: REMOVE_BOOK, book,
+});
 
 // Reducer
 const booksReducer = (state = [], action) => {
   switch (action.type) {
     case `${ADD_BOOK}/fulfilled`:
-      return [...state, action.payload];
+      return state.concat(action.meta.arg);
     case `${REMOVE_BOOK}/fulfilled`:
-      return [...state.filter(({ id }) => id !== action.bookId)];
+      return state.filter((book) => book.item_id !== action.meta.arg);
     case `${GET_BOOKS}/fulfilled`:
-      return [...action.payload];
+      return (
+        Object.keys(action.payload).map((key) => {
+          const {
+            title,
+            author,
+            category,
+          } = action.payload[key][0];
+          return ({
+            item_id: key,
+            title,
+            author,
+            category,
+          });
+        })
+      );
     default:
       return state;
   }
