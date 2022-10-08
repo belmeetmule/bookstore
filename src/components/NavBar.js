@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import userImg from '../assets/user-img.png';
 
 const Navbar = () => {
   const links = [
@@ -15,28 +16,21 @@ const Navbar = () => {
     },
   ];
 
-  const navStyle = {
-    marginBottom: '3rem',
-  };
-
-  const headerStyle = {
-    display: 'inline-block',
-    marginRight: '2rem',
-  };
   return (
 
-    <nav style={navStyle}>
-      <h1 style={headerStyle}>BookCMS</h1>
-      <ul className="menu">
+    <header className="flexd">
+      <div className="h-links flexd">
+        <h1>BookCMS</h1>
         {links.map((link) => (
-          <li key={link.id} className="menuItem">
-            <NavLink to={link.path} className="active-link">
-              {link.text}
-            </NavLink>
-          </li>
+          <NavLink key="link.id" to={link.path} className="link">
+            {link.text}
+          </NavLink>
         ))}
-      </ul>
-    </nav>
+      </div>
+      <div id="user-pic">
+        <img src={userImg} alt="profile-pic" />
+      </div>
+    </header>
   );
 };
 

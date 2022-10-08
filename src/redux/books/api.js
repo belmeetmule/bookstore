@@ -32,7 +32,7 @@ const addBook = createAsyncThunk(
 const removeBook = createAsyncThunk(
   REMOVE_BOOK,
   async (bookid) => {
-    await fetch(`baseURL/${bookid}`, {
+    await fetch(baseURL + bookid, {
       method: 'DELETE',
     });
   },

@@ -35,37 +35,48 @@ const BookForm = () => {
 
   return (
     <>
-      <h3 style={{ marginTop: '2rem' }}>ADD NEW BOOK</h3>
-      <form onSubmit={handleSumbit} style={{ display: 'flex', gap: '1rem' }}>
-        <input
-          type="text"
-          value={title}
-          placeholder="Title"
-          name="title"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          value={author}
-          placeholder="Author"
-          name="author"
-          onChange={handleChange}
-        />
-        <select
-          name="category"
-          value={category}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Category</option>
-          <option value="Biography">Biography</option>
-          <option value="Fiction">Fiction</option>
-          <option value="History">History</option>
-          <option value="Poetry">Poetry</option>
+      <div id="add-div" className="f-col">
+        <div className="add-book-line-div" />
+        <h2>ADD NEW BOOK</h2>
+        <form id="add-book-form" onSubmit={handleSumbit} className="flexd">
+          <input
+            id="book-title"
+            type="text"
+            value={title}
+            placeholder="Title"
+            name="title"
+            onChange={handleChange}
+          />
+          <input
+            id="book-author"
+            type="text"
+            value={author}
+            placeholder="Author"
+            name="author"
+            onChange={handleChange}
+          />
+          <select
+            id="form-categ"
+            name="category"
+            value={category}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Category</option>
+            <option value="Biography">Biography</option>
+            <option value="Fiction">Fiction</option>
+            <option value="History">History</option>
+            <option value="Poetry">Poetry</option>
 
-        </select>
-        <button type="submit">Add Book</button>
-      </form>
+          </select>
+          <button
+            className="add-book-btn"
+            type="submit"
+          >
+            Add Book
+          </button>
+        </form>
+      </div>
     </>
   );
 };
