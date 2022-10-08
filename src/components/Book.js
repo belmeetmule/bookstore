@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBookToAPI } from '../redux/books/api';
+import { removeBook } from '../redux/books/api';
 
 function Book(props) {
   const { book } = props;
@@ -21,7 +21,7 @@ function Book(props) {
             type="button"
             className="axn-btn"
             id="remo"
-            onClick={() => dispatch(removeBookToAPI(book.item_id))}
+            onClick={() => dispatch(removeBook(book.item_id))}
           >
             Remove
           </button>
