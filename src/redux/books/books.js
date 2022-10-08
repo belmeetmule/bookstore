@@ -1,35 +1,29 @@
-import api from '../../api';
-
 // Actions
-const ADD_BOOK = 'bookstore/books/ADD_BOOK';
-const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
-const GET_BOOKS = 'bookstore/books/GET_BOOKS';
+export const ADD_BOOK = 'bookstore/books/ADD_BOOK';
+export const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
+export const GET_BOOKS = 'bookstore/books/GET_BOOKS';
 
-export const getBooks = () => async (dispatch) => {
-  const books = await api.fetchBooks();
-  dispatch({ type: GET_BOOKS, books });
+export const GETBOOKS = (dispatch) => {
+  dispatch({ type: GET_BOOKS, books: [] });
 };
 
-// Action creators
-export const addBook = (book) => async (dispatch) => {
-  api.addNewBook(book);
+export const ADDBOOK = (dispatch, book) => {
   dispatch({ type: ADD_BOOK, book });
 };
 
-export const removeBook = (bookId) => async (dispatch) => {
-  api.removeBook(bookId);
+export const REMOVEBOOK = (dispatch, bookId) => {
   dispatch({ type: REMOVE_BOOK, bookId });
 };
 
 // Reducer
 const booksReducer = (state = [], action) => {
   switch (action.type) {
-    case ADD_BOOK:
-      return [...state, action.book];
-    case REMOVE_BOOK:
+    case `${ADD_BOOK}/fulfilled`:
+      return [...state, action.payload];
+    case `${REMOVE_BOOK}/fulfilled`:
       return [...state.filter(({ id }) => id !== action.bookId)];
-    case GET_BOOKS:
-      return action.books;
+    case `${GET_BOOKS}/fulfilled`:
+      return [...action.payload];
     default:
       return state;
   }
