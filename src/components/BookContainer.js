@@ -17,12 +17,14 @@ const BookContainer = () => {
 
   return (
     <>
-      <div id="books-list">
-        {books.map((book) => (
-          <BookList key={book.item_id} book={book} />
-        ))}
-      </div>
-      <BookForm />
+      <section id="main-sec" className="f-col">
+        <div id="books-list" className="f-col">
+          {books.map((book) => (
+            <BookList key={book.item_id} book={book} />
+          ))}
+        </div>
+        <BookForm />
+      </section>
     </>
   );
 };
